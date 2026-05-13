@@ -1,0 +1,87 @@
+---
+const avis = [
+  {
+    texte: 'Une équipe à l\'écoute, des résultats parfaits.',
+    prenom: 'Sophie M.',
+    date:   'il y a 2 semaines',
+  },
+  {
+    texte: 'Le suivi est exceptionnel. Je recommande.',
+    prenom: 'Thomas R.',
+    date:   'il y a 1 mois',
+  },
+  {
+    texte: 'Cabinet d\'exception. Mon smile design est magnifique.',
+    prenom: 'Élodie P.',
+    date:   'il y a 3 semaines',
+  },
+];
+---
+
+<section id="avis" class="py-28 xl:py-40 bg-bg" aria-labelledby="avis-title">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16">
+
+    <!-- Label section -->
+    <p
+      class="text-[11px] text-ink/30 uppercase tracking-[0.18em] mb-20 lg:mb-24"
+      data-reveal
+    >
+      05 — Ils nous recommandent
+    </p>
+
+    <!-- Note géante -->
+    <div class="text-center mb-16 lg:mb-20" data-reveal data-delay="1">
+      <div
+        class="flex items-center justify-center gap-4 lg:gap-6"
+        role="img"
+        aria-label="Note moyenne : 4,9 étoiles sur 5"
+      >
+        <span
+          class="font-fraunces font-semibold text-gold leading-none select-none"
+          style="font-size: clamp(5rem, 13vw, 11rem); letter-spacing: -0.04em; line-height: 0.9;"
+        >4,9</span>
+        <span
+          class="text-gold select-none"
+          style="font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1;"
+          aria-hidden="true"
+        >★</span>
+      </div>
+      <p class="text-[11px] text-ink/30 uppercase tracking-[0.2em] mt-6">
+        Sur 247 avis vérifiés · Google
+      </p>
+    </div>
+
+    <!-- 3 mini-cartes -->
+    <div
+      class="grid sm:grid-cols-3 gap-px bg-ink/8 mb-14 lg:mb-16"
+      id="avis-title"
+      data-reveal
+      data-delay="2"
+      role="list"
+      aria-label="Extraits d'avis patients"
+    >
+      {avis.map((a) => (
+        <div class="bg-bg px-8 py-8 lg:px-10 lg:py-10" role="listitem">
+          <p class="text-[15px] text-ink/65 leading-relaxed mb-6 italic">
+            "{a.texte}"
+          </p>
+          <div>
+            <p class="text-sm font-semibold text-ink">{a.prenom}</p>
+            <p class="text-[11px] text-ink/30 mt-0.5 uppercase tracking-[0.1em]">{a.date}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Google -->
+    <div class="text-center" data-reveal data-delay="3">
+      <a href="#" class="cta-link text-sm font-medium text-ink mx-auto">
+        Lire tous les avis sur Google
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

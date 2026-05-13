@@ -1,0 +1,65 @@
+---
+const stats = [
+  { number: '20+',    label: "ans d'expertise" },
+  { number: '12 000', label: 'patients suivis'  },
+  { number: '98%',    label: 'satisfaction'     },
+  { number: '4',      label: 'spécialistes'     },
+];
+---
+
+<section id="chiffres" class="py-28 xl:py-40 bg-bg" aria-labelledby="stats-title">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16">
+
+    <!-- Numéro de section -->
+    <div aria-hidden="true">
+      <span
+        class="font-fraunces font-light select-none leading-none text-ink/[0.13]"
+        style="font-size: clamp(5rem, 10vw, 12rem); letter-spacing: -0.04em;"
+      >02</span>
+    </div>
+
+    <!-- Grille 2 colonnes -->
+    <div class="mt-6 lg:mt-0 grid lg:grid-cols-2 gap-16 lg:gap-28 xl:gap-40 items-start">
+
+      <!-- Gauche : titre + texte éditorial -->
+      <div data-reveal>
+        <h2
+          id="stats-title"
+          class="font-fraunces font-semibold text-ink mb-10"
+          style="font-size: clamp(2.2rem, 4vw, 3.8rem); letter-spacing: -0.02em; line-height: 1.06;"
+        >
+          Notre cabinet<br />en chiffres
+        </h2>
+        <div class="space-y-5 text-ink/50 leading-relaxed max-w-sm lg:max-w-md">
+          <p>
+            Fondé il y a plus de vingt ans au cœur d'Aix-en-Provence, notre cabinet réunit quatre
+            praticiens passionnés autour d'une même vision : une dentisterie d'exception, rigoureuse
+            et bienveillante.
+          </p>
+          <p>
+            Chaque décision clinique est guidée par l'écoute, la précision et un engagement sans
+            compromis envers la santé de nos patients — du premier bilan au suivi au long cours.
+          </p>
+        </div>
+      </div>
+
+      <!-- Droite : grille 2×2 stats -->
+      <div class="grid grid-cols-2 gap-x-10 gap-y-12 lg:gap-x-16 lg:gap-y-14">
+        {stats.map((stat, i) => (
+          <div data-reveal data-delay={String(i + 1)}>
+            <span
+              class="block font-fraunces font-semibold text-ink leading-none mb-2"
+              style="font-size: clamp(3rem, 5vw, 5.5rem); letter-spacing: -0.03em;"
+            >
+              {stat.number}
+            </span>
+            <span class="text-[11px] text-ink/35 uppercase tracking-[0.16em]">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

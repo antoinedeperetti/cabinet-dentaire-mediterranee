@@ -1,0 +1,120 @@
+---
+const specialites = [
+  {
+    roman:  'I',
+    titre:  'Implantologie',
+    desc:   'Remplacement permanent et naturel des dents manquantes. Implants de dernière génération pour un résultat durable — sans compromis sur l\'esthétique ni sur la fonction.',
+    image:  'https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Chirurgien posant un implant dentaire',
+  },
+  {
+    roman:  'II',
+    titre:  'Orthodontie invisible',
+    desc:   'Aligneurs transparents sur mesure pour corriger l\'alignement discrètement. Une solution idéale pour les adultes actifs qui refusent de se contraindre.',
+    image:  'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Gouttières d\'orthodontie transparentes',
+  },
+  {
+    roman:  'III',
+    titre:  'Esthétique dentaire',
+    desc:   'Blanchiment professionnel, facettes en céramique, composite stratifié. Des techniques douces et précises pour un sourire naturel, lumineux et durable.',
+    image:  'https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Sourire après traitement esthétique dentaire',
+  },
+  {
+    roman:  'IV',
+    titre:  'Soins préventifs',
+    desc:   'Bilans réguliers, détartrage professionnel, scellement des sillons. La meilleure dentisterie est celle que l\'on anticipe — pour préserver ce qui compte.',
+    image:  'https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=700&q=80&auto=format&fit=crop',
+    imgAlt: 'Consultation préventive en cabinet dentaire',
+  },
+];
+---
+
+<section id="soins" class="py-28 xl:py-40 bg-bg" aria-labelledby="soins-title">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16">
+
+    <!-- En-tête -->
+    <div class="flex items-end justify-between mb-16 lg:mb-20 gap-8">
+      <div>
+        <span
+          class="font-fraunces font-light select-none leading-none text-ink/[0.13]"
+          style="font-size: clamp(5rem, 10vw, 12rem); letter-spacing: -0.04em;"
+          aria-hidden="true"
+        >03</span>
+        <h2
+          id="soins-title"
+          class="font-fraunces font-semibold text-ink mt-2"
+          style="font-size: clamp(2.2rem, 4vw, 3.8rem); letter-spacing: -0.02em; line-height: 1.06;"
+          data-reveal
+        >
+          Nos savoir-faire
+        </h2>
+      </div>
+    </div>
+
+    <!-- Grille 2×2 -->
+    <div class="grid sm:grid-cols-2 gap-px bg-ink/8" role="list">
+      {specialites.map((s, i) => (
+        <article
+          class="specialty-card group relative bg-bg overflow-hidden cursor-default"
+          role="listitem"
+          data-reveal
+          data-delay={String(Math.min(i + 1, 4))}
+        >
+          <!--
+            Le wrapper .specialty-img contient ENSEMBLE l'image ET l'overlay navy.
+            Le clip-path est appliqué au wrapper : les deux se révèlent au survol.
+          -->
+          <div class="specialty-img absolute inset-0" aria-hidden="true">
+            <img
+              src={s.image}
+              alt=""
+              width="700"
+              height="500"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <!-- Overlay bleu profond -->
+            <div class="absolute inset-0 bg-navy/80"></div>
+          </div>
+
+          <!-- Contenu de la carte -->
+          <div class="relative z-10 p-8 lg:p-10 xl:p-12 flex flex-col min-h-[340px] lg:min-h-[380px]">
+            <!-- Numéro romain -->
+            <span
+              class="font-fraunces font-light text-ink/20 group-hover:text-white/20 transition-colors duration-500 leading-none mb-auto select-none"
+              style="font-size: clamp(3rem, 5vw, 5rem); letter-spacing: -0.03em;"
+              aria-hidden="true"
+            >
+              {s.roman}
+            </span>
+
+            <div class="mt-8">
+              <h3
+                class="font-fraunces font-semibold text-ink group-hover:text-white transition-colors duration-500 mb-4"
+                style="font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.02em; line-height: 1.1;"
+              >
+                {s.titre}
+              </h3>
+              <p class="text-sm text-ink/55 group-hover:text-white/70 transition-colors duration-500 leading-relaxed mb-6 max-w-sm">
+                {s.desc}
+              </p>
+              <!-- Lien : navy par défaut, bleu clair au hover (lisible sur overlay navy) -->
+              <a
+                href="#rdv"
+                class="cta-link text-sm font-medium text-navy group-hover:text-[#A5C5E0] transition-colors duration-500"
+              >
+                En savoir plus
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

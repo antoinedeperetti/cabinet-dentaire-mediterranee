@@ -1,0 +1,87 @@
+---
+import HeroTitle from './HeroTitle.tsx';
+---
+
+<section
+  id="hero"
+  class="relative min-h-dvh grid lg:grid-cols-[58%_42%] overflow-hidden bg-bg"
+  aria-label="Introduction"
+>
+  <!-- Colonne gauche : contenu éditorial -->
+  <div class="flex flex-col justify-between px-6 lg:pl-16 xl:pl-24 pr-8 pt-24 pb-10 lg:pt-0 lg:pb-0 lg:py-0">
+
+    <!-- Numéro de section haut gauche -->
+    <div class="hidden lg:flex items-end pt-24 xl:pt-28">
+      <span
+        class="font-fraunces font-light select-none leading-none text-ink/[0.13]"
+        style="font-size: clamp(6rem, 10vw, 13rem); letter-spacing: -0.04em;"
+        aria-hidden="true"
+      >
+        01
+      </span>
+    </div>
+
+    <!-- Titre + sous-titre + CTAs (centre vertical) -->
+    <div class="py-10 lg:py-0">
+      <HeroTitle client:load />
+
+      <p
+        class="mt-8 lg:mt-10 text-ink/50 leading-relaxed max-w-md font-light"
+        style="font-size: clamp(1rem, 1.3vw, 1.15rem);"
+        data-reveal
+        data-delay="5"
+      >
+        Cabinet d'exception au cœur d'Aix-en-Provence. Implantologie,
+        orthodontie invisible, esthétique dentaire — pour une clientèle exigeante.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row gap-6 sm:gap-10 mt-10 lg:mt-12"
+        data-reveal
+        data-delay="6"
+      >
+        <a href="#rdv" class="cta-link text-ink font-medium text-base">
+          Prendre rendez-vous
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#soins" class="cta-link text-ink/45 font-medium text-base">
+          Découvrir nos soins
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pied : localisation -->
+    <div class="pb-10 lg:pb-12">
+      <p class="text-[11px] text-ink/25 tracking-[0.18em] uppercase">
+        Aix-en-Provence · 12 Cours Mirabeau
+      </p>
+    </div>
+  </div>
+
+  <!-- Colonne droite : photo éditoriale plein format -->
+  <div class="relative h-[55vw] lg:h-auto order-first lg:order-last">
+    <img
+      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=85&auto=format&fit=crop"
+      alt="Salle de soins du Cabinet Dentaire Méditerranée, Aix-en-Provence"
+      width="900"
+      height="1200"
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover object-top"
+    />
+    <!-- Voile très subtil -->
+    <div class="absolute inset-0 bg-navy/5" aria-hidden="true"></div>
+
+    <!-- Numéro mobile -->
+    <span
+      class="lg:hidden absolute bottom-4 right-4 font-fraunces font-light text-white/20 leading-none select-none"
+      style="font-size: 5rem; letter-spacing: -0.04em;"
+      aria-hidden="true"
+    >01</span>
+  </div>
+</section>

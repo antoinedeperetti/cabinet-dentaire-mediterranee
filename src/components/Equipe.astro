@@ -1,0 +1,112 @@
+---
+const praticiens = [
+  {
+    nom:       'Dr. Pierre Lefèvre',
+    specialite:'Orthodontie',
+    bio:       'Maîtrise universitaire d\'orthodontie (Université de Lyon). Expert en aligneurs invisibles et en traitements orthopédiques pour adultes et adolescents. Engagé dans la formation continue.',
+    image:     'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80&auto=format&fit=crop&crop=faces',
+    imgAlt:    'Dr. Pierre Lefèvre, orthodontiste',
+  },
+  {
+    nom:       'Dr. Camille Roussel',
+    specialite:'Esthétique dentaire',
+    bio:       'Formée à Paris et à New York en smile design et techniques sans métal. Conférencière internationale, référente française en dentisterie esthétique avancée.',
+    image:     'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80&auto=format&fit=crop&crop=faces',
+    imgAlt:    'Dr. Camille Roussel, spécialiste esthétique dentaire',
+  },
+];
+---
+
+<section id="equipe" class="py-28 xl:py-40 bg-bg" aria-labelledby="equipe-title">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16">
+
+    <!-- Numéro + titre section -->
+    <div class="mb-16 lg:mb-20">
+      <span
+        class="font-fraunces font-light select-none leading-none text-ink/[0.13]"
+        style="font-size: clamp(5rem, 10vw, 12rem); letter-spacing: -0.04em;"
+        aria-hidden="true"
+      >04</span>
+      <h2
+        id="equipe-title"
+        class="font-fraunces font-semibold text-ink mt-2"
+        style="font-size: clamp(2.2rem, 4vw, 3.8rem); letter-spacing: -0.02em; line-height: 1.06;"
+        data-reveal
+      >
+        L'équipe
+      </h2>
+    </div>
+
+    <!-- Dr. principale : layout asymétrique -->
+    <div class="grid lg:grid-cols-[55%_45%] gap-0 mb-0 border-t border-ink/10" data-reveal>
+      <!-- Grand portrait -->
+      <div class="team-card relative overflow-hidden h-[60vw] lg:h-[52vw] max-h-[700px]">
+        <img
+          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80&auto=format&fit=crop&crop=faces"
+          alt="Dr. Marie Dubois, chirurgienne implantaire"
+          width="800"
+          height="1000"
+          loading="lazy"
+          class="team-img w-full h-full object-cover object-top"
+        />
+      </div>
+
+      <!-- Bio -->
+      <div class="flex flex-col justify-end px-0 lg:px-14 xl:px-20 py-10 lg:py-16 border-l border-ink/10">
+        <p class="text-[11px] text-gold uppercase tracking-[0.18em] mb-6">Directrice du cabinet</p>
+        <h3
+          class="font-fraunces font-semibold text-ink mb-4"
+          style="font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing: -0.02em; line-height: 1.08;"
+        >
+          Dr. Marie Dubois
+        </h3>
+        <p class="text-sm text-gold mb-6 font-medium">Chirurgie implantaire</p>
+        <p class="text-ink/55 leading-relaxed text-base max-w-sm">
+          Diplômée de la Faculté de Médecine de Marseille, spécialisée en implantologie orale et en
+          chirurgie reconstructrice. Douze ans d'expérience en réhabilitation complète et en
+          reconstruction osseuse guidée.
+        </p>
+        <div class="mt-10 pt-10 border-t border-ink/10">
+          <p class="text-[11px] text-ink/30 uppercase tracking-[0.14em]">
+            Membre de la SFIO · Société Française d'Implantologie Orale
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deux autres praticiens -->
+    <div class="grid sm:grid-cols-2 border-t border-ink/10">
+      {praticiens.map((p, i) => (
+        <article
+          class={`team-card relative overflow-hidden border-b border-ink/10 ${i === 0 ? 'sm:border-r sm:border-ink/10' : ''}`}
+          data-reveal
+          data-delay={String(i + 1)}
+        >
+          <!-- Photo compacte -->
+          <div class="overflow-hidden h-[52vw] sm:h-[32vw] lg:h-[26vw] max-h-[380px]">
+            <img
+              src={p.image}
+              alt={p.imgAlt}
+              width="600"
+              height="700"
+              loading="lazy"
+              class="team-img w-full h-full object-cover object-top"
+            />
+          </div>
+          <!-- Infos -->
+          <div class="px-8 py-8 lg:px-10 lg:py-10">
+            <p class="text-[11px] text-gold uppercase tracking-[0.18em] mb-3">{p.specialite}</p>
+            <h3
+              class="font-fraunces font-semibold text-ink mb-3"
+              style="font-size: clamp(1.3rem, 2vw, 1.7rem); letter-spacing: -0.02em; line-height: 1.1;"
+            >
+              {p.nom}
+            </h3>
+            <p class="text-sm text-ink/50 leading-relaxed">{p.bio}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

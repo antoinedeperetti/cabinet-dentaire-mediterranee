@@ -1,0 +1,44 @@
+---
+---
+
+<footer class="bg-ink border-t border-white/[0.06]" role="contentinfo">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16 py-12 lg:py-14">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+
+      <!-- Logo -->
+      <a
+        href="#hero"
+        class="font-fraunces text-[15px] italic font-normal text-white/60 hover:text-white transition-colors duration-300"
+        aria-label="Cabinet Dentaire Méditerranée — retour en haut"
+      >
+        Méditerranée
+      </a>
+
+      <!-- Liens légaux -->
+      <nav aria-label="Liens légaux">
+        <ul class="flex flex-wrap gap-x-6 gap-y-2" role="list">
+          {[
+            { href: '#', label: 'Mentions légales' },
+            { href: '#', label: 'Confidentialité' },
+            { href: '#', label: 'Plan du site' },
+          ].map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-xs text-white/25 hover:text-white/60 transition-colors duration-300"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Copyright -->
+      <p class="text-xs text-white/20 whitespace-nowrap">
+        © 2026 — Cabinet Dentaire Méditerranée
+      </p>
+
+    </div>
+  </div>
+</footer>

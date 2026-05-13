@@ -1,0 +1,73 @@
+---
+const piliers = [
+  {
+    titre: 'Excellence',
+    desc:  'La rigueur clinique n\'est pas une option. Chaque geste, chaque matériau, chaque décision thérapeutique est soumis à l\'exigence la plus haute.',
+  },
+  {
+    titre: 'Écoute',
+    desc:  'Avant d\'être des praticiens, nous sommes des interlocuteurs. Comprendre votre situation dans sa globalité conditionne la qualité de notre réponse.',
+  },
+  {
+    titre: 'Innovation',
+    desc:  'Cone beam 3D, empreintes numériques, flux numérique intégral — nos équipements nous permettent de travailler avec une précision sans précédent.',
+  },
+  {
+    titre: 'Engagement',
+    desc:  'Un traitement ne s\'arrête pas à la dernière séance. Notre suivi au long cours garantit la pérennité des résultats et votre tranquillité d\'esprit.',
+  },
+];
+---
+
+<section id="valeurs" class="py-28 xl:py-40 bg-bg" aria-labelledby="valeurs-title">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-16">
+
+    <!-- Numéro + grand texte éditorial pleine largeur -->
+    <div class="mb-16 lg:mb-24">
+      <span
+        class="font-fraunces font-light select-none leading-none text-ink/[0.13]"
+        style="font-size: clamp(5rem, 10vw, 12rem); letter-spacing: -0.04em;"
+        aria-hidden="true"
+      >06</span>
+
+      <div class="mt-4 max-w-4xl" data-reveal>
+        <h2
+          id="valeurs-title"
+          class="font-fraunces font-semibold text-ink mb-8"
+          style="font-size: clamp(2.2rem, 4vw, 3.8rem); letter-spacing: -0.02em; line-height: 1.06;"
+        >
+          Une philosophie<br />du soin
+        </h2>
+        <p
+          class="text-ink/55 leading-relaxed"
+          style="font-size: clamp(1.05rem, 1.6vw, 1.3rem); max-width: 58ch;"
+        >
+          La dentisterie que nous pratiquons ne cherche pas la rapidité ni la standardisation.
+          Elle cherche la justesse — pour chaque patient, à chaque étape, sans exception.
+          Quatre principes structurent notre manière d'être et de travailler.
+        </p>
+      </div>
+    </div>
+
+    <!-- Grille 4 piliers -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 border-t border-ink/10">
+      {piliers.map((p, i) => (
+        <div
+          class={`py-10 lg:py-12 pr-8 lg:pr-10 ${i > 0 ? 'border-t sm:border-t-0 sm:border-l border-ink/10' : ''}`}
+          data-reveal
+          data-delay={String(i + 1)}
+        >
+          <span class="text-[11px] text-gold uppercase tracking-[0.18em] block mb-5">0{i + 1}</span>
+          <h3
+            class="font-fraunces font-semibold text-ink mb-4"
+            style="font-size: clamp(1.4rem, 2vw, 1.8rem); letter-spacing: -0.02em; line-height: 1.1;"
+          >
+            {p.titre}
+          </h3>
+          <p class="text-sm text-ink/50 leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
