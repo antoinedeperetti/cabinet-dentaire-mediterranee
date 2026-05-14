@@ -113,5 +113,32 @@ const schema = {
         reveals.forEach(el => io.observe(el));
       }
     </script>
+
+    <!-- Cal.com popup embed -->
+    <script is:inline>
+      // 1. Charge embed.js de façon asynchrone
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, [L, namespace, ar[2]])}else p(cal, ar) ; return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      // 2. Init + config UI globale
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        theme: "light",
+        styles: { branding: { brandColor: "#0A0A0A" } },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+
+      // 3. Event delegation : intercepte tous les clics sur [data-cal-link]
+      //    Lit le calLink de l'élément cliqué au moment du clic → bon event pour chaque carte
+      document.addEventListener("click", function (e) {
+        var trigger = e.target.closest("[data-cal-link]");
+        if (!trigger) return;
+        e.preventDefault();
+        var calLink = trigger.getAttribute("data-cal-link");
+        if (calLink) {
+          Cal("modal", { calLink: calLink, config: { layout: "month_view" } });
+        }
+      });
+    </script>
   </body>
 </html>
