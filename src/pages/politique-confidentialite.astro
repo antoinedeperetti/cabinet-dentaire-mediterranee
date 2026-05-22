@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Politique de confidentialité — Cabinet Dentaire Méditerranée"
+  description="Politique de confidentialité et informations RGPD du site de démonstration Cabinet Dentaire Méditerranée."
+>
+  <Nav />
+
+  <main class="bg-bg min-h-screen">
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-16 pt-[120px] pb-12 lg:pt-[136px] lg:pb-16">
+
+      <nav class="mb-10" aria-label="Fil d'Ariane">
+        <ol class="flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] text-ink/30 font-medium">
+          <li><a href="/" class="hover:text-ink/60 transition-colors duration-300">Accueil</a></li>
+          <li aria-hidden="true" class="text-ink/15">/</li>
+          <li aria-current="page" class="text-ink/50">Politique de confidentialité</li>
+        </ol>
+      </nav>
+
+      <div class="max-w-[680px]" data-reveal>
+        <h1 class="font-fraunces font-light text-ink leading-[1.05] mb-5" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem);">
+          Politique de<br />confidentialité
+        </h1>
+        <p class="text-[13px] text-ink/35 tracking-wide">Dernière mise à jour : mai 2026 — Conforme RGPD</p>
+      </div>
+
+      <div class="mt-10 h-px bg-ink/8 max-w-[680px]" data-reveal data-delay="1"></div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-16 pb-24 lg:pb-32">
+      <div class="max-w-[680px] space-y-12">
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Responsable du traitement
+          </h2>
+          <div class="space-y-1.5 text-[15px] leading-relaxed text-ink/65">
+            <p class="font-medium text-ink">Antoine De Peretti</p>
+            <p>Freelance web, Aix-en-Provence</p>
+            <p>
+              E-mail :&nbsp;
+              <a
+                href="mailto:antoine.deperetti.web@outlook.fr"
+                class="text-navy hover:text-gold transition-colors duration-300"
+              >
+                antoine.deperetti.web@outlook.fr
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Données collectées
+          </h2>
+          <div class="space-y-3 text-[15px] leading-relaxed text-ink/65">
+            <p>
+              Le formulaire de prise de rendez-vous de ce site redirige vers
+              <span class="font-medium text-ink">Cal.com</span>, qui collecte les données
+              nécessaires à la réservation (nom, e-mail, créneau choisi). Cal.com est conforme
+              au RGPD et héberge ses données au sein de l'Union Européenne.
+            </p>
+            <p>
+              <span class="font-medium text-ink">Aucune donnée médicale</span> n'est collectée
+              ni stockée par ce site.
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Cookies
+          </h2>
+          <div class="space-y-3 text-[15px] leading-relaxed text-ink/65">
+            <p>
+              Ce site n'utilise <span class="font-medium text-ink">aucun cookie de tracking</span>
+              ni publicitaire. Seuls les cookies techniques strictement nécessaires au
+              fonctionnement du système de réservation Cal.com sont susceptibles d'être déposés.
+              Ces cookies ne requièrent pas de consentement préalable.
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Vos droits (RGPD art. 15–21)
+          </h2>
+          <div class="space-y-3 text-[15px] leading-relaxed text-ink/65">
+            <p>
+              Conformément au Règlement Général sur la Protection des Données, vous disposez
+              d'un droit d'<span class="font-medium text-ink">accès</span>, de
+              <span class="font-medium text-ink">rectification</span>, de
+              <span class="font-medium text-ink">suppression</span> et d'
+              <span class="font-medium text-ink">opposition</span> concernant vos données
+              personnelles.
+            </p>
+            <p>
+              Pour exercer ces droits, contactez :&nbsp;
+              <a
+                href="mailto:antoine.deperetti.web@outlook.fr"
+                class="text-navy hover:text-gold transition-colors duration-300"
+              >
+                antoine.deperetti.web@outlook.fr
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Durée de conservation
+          </h2>
+          <p class="text-[15px] leading-relaxed text-ink/65">
+            Ce site ne stocke aucune donnée personnelle en propre. Les données de rendez-vous
+            sont gérées par Cal.com selon leur propre&nbsp;
+            <a
+              href="https://cal.com/privacy"
+              class="text-navy hover:text-gold transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              politique de confidentialité
+            </a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

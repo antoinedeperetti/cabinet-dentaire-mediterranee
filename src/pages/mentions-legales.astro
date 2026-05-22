@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Mentions légales — Cabinet Dentaire Méditerranée"
+  description="Mentions légales du site de démonstration Cabinet Dentaire Méditerranée, réalisé par Antoine De Peretti, freelance web à Aix-en-Provence."
+>
+  <Nav />
+
+  <main class="bg-bg min-h-screen">
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-16 pt-[120px] pb-12 lg:pt-[136px] lg:pb-16">
+
+      <nav class="mb-10" aria-label="Fil d'Ariane">
+        <ol class="flex items-center gap-2 text-[11px] uppercase tracking-[0.12em] text-ink/30 font-medium">
+          <li><a href="/" class="hover:text-ink/60 transition-colors duration-300">Accueil</a></li>
+          <li aria-hidden="true" class="text-ink/15">/</li>
+          <li aria-current="page" class="text-ink/50">Mentions légales</li>
+        </ol>
+      </nav>
+
+      <div class="max-w-[680px]" data-reveal>
+        <h1 class="font-fraunces font-light text-ink leading-[1.05] mb-5" style="font-size: clamp(2.25rem, 4.5vw, 3.5rem);">
+          Mentions légales
+        </h1>
+        <p class="text-[13px] text-ink/35 tracking-wide">Dernière mise à jour : mai 2026</p>
+      </div>
+
+      <div class="mt-10 h-px bg-ink/8 max-w-[680px]" data-reveal data-delay="1"></div>
+    </div>
+
+    <div class="max-w-[1440px] mx-auto px-6 lg:px-16 pb-24 lg:pb-32">
+      <div class="max-w-[680px] space-y-12">
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Éditeur et conception du site
+          </h2>
+          <div class="space-y-1.5 text-[15px] leading-relaxed text-ink/65">
+            <p class="font-medium text-ink">Antoine De Peretti</p>
+            <p>Freelance web — Micro-entrepreneur (SIREN à venir)</p>
+            <p>355 Rue de la Grande Tousque<br />13100 Aix-en-Provence, France</p>
+            <p>
+              E-mail :&nbsp;
+              <a
+                href="mailto:antoine.deperetti.web@outlook.fr"
+                class="text-navy hover:text-gold transition-colors duration-300"
+              >
+                antoine.deperetti.web@outlook.fr
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Nature du site
+          </h2>
+          <p class="text-[15px] leading-relaxed text-ink/65">
+            Ce site est un <span class="font-medium text-ink">projet de démonstration</span> créé
+            pour illustrer les compétences d'Antoine De Peretti en conception de sites internet
+            pour cabinets dentaires premium. Tous les noms de praticiens, photographies,
+            témoignages et coordonnées affichés sont fictifs et n'ont qu'une vocation
+            illustrative.
+          </p>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Hébergement
+          </h2>
+          <div class="space-y-1.5 text-[15px] leading-relaxed text-ink/65">
+            <p class="font-medium text-ink">Vercel Inc.</p>
+            <p>340 S Lemon Ave #4133<br />Walnut, CA 91789, États-Unis</p>
+            <p>
+              <a
+                href="https://vercel.com"
+                class="text-navy hover:text-gold transition-colors duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                vercel.com
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Propriété intellectuelle
+          </h2>
+          <p class="text-[15px] leading-relaxed text-ink/65">
+            L'ensemble du contenu de ce site — textes, images, code et design — est la propriété
+            d'<span class="font-medium text-ink">Antoine De Peretti</span>. Toute reproduction,
+            représentation ou exploitation, partielle ou intégrale, sans autorisation écrite
+            préalable est strictement interdite.
+          </p>
+        </section>
+
+        <section data-reveal>
+          <h2 class="font-fraunces text-[1.25rem] font-medium text-ink mb-4 pb-3 border-b border-ink/8">
+            Loi applicable
+          </h2>
+          <p class="text-[15px] leading-relaxed text-ink/65">
+            Le présent site est soumis au droit français. Tout litige relatif à son accès ou
+            à son utilisation relève de la compétence exclusive des tribunaux français.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
