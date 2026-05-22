@@ -66,18 +66,15 @@ const schema = {
 
       if (!prefersReduced) {
         const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          direction: 'vertical',
-          gestureDirection: 'vertical',
+          duration: 1.0,
+          easing: (t: number) => 1 - Math.pow(1 - t, 3),
           smooth: true,
-          mouseMultiplier: 1,
           smoothTouch: false,
           touchMultiplier: 2,
-          infinite: false,
+          mouseMultiplier: 1,
         });
 
-        // Expose pour l'intégration Cal.com (script inline)
+        // Expose globally pour le script inline Cal.com
         (window as any).__lenis = lenis;
 
         function raf(time: number) {
@@ -94,14 +91,10 @@ const schema = {
             const target = document.querySelector(href);
             if (target) {
               e.preventDefault();
-              lenis.scrollTo(target as HTMLElement, { offset: -80, duration: 1.2 });
+              lenis.scrollTo(target as HTMLElement, { offset: -80, duration: 1.0 });
             }
           });
         });
-
-        // Pause Lenis quand la modale Cal.com est ouverte
-        window.addEventListener('cal:popup_loaded', () => lenis.stop());
-        window.addEventListener('cal:popup_closed', () => lenis.start());
       }
     </script>
 
@@ -142,14 +135,50 @@ const schema = {
         layout: "month_view"
       });
 
-      // 3. Event delegation : intercepte tous les clics sur [data-cal-link]
-      //    Lit le calLink de l'élément cliqué au moment du clic → bon event pour chaque carte
+      // 3. Unlock scroll — restaure tout ce que Cal.com peut avoir cassé
+      function unlockScroll() {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.documentElement.style.overflow = '';
+        if (window.__lenis) {
+          window.__lenis.start();
+          window.__lenis.scrollTo(window.scrollY, { immediate: true });
+        }
+      }
+
+      // 4. Stratégie A : events Cal.com natifs (si la version les supporte)
+      window.addEventListener('cal:popup_loaded', function() {
+        if (window.__lenis) window.__lenis.stop();
+      });
+      window.addEventListener('cal:popup_closed', unlockScroll);
+
+      // 5. Stratégie B : fallback Echap
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') setTimeout(unlockScroll, 50);
+      });
+
+      // 6. Stratégie C : MutationObserver — détecte quand Cal.com retire overflow:hidden
+      //    C'est le filet de sécurité principal quand les events ne se déclenchent pas
+      var calOpen = false;
+      var calObserver = new MutationObserver(function() {
+        var bodyHidden = document.body.style.overflow === 'hidden';
+        var htmlHidden = document.documentElement.style.overflow === 'hidden';
+        if (!bodyHidden && !htmlHidden && calOpen) {
+          calOpen = false;
+          unlockScroll();
+        }
+      });
+      calObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+      calObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+
+      // 7. Event delegation : intercepte les clics sur [data-cal-link]
       document.addEventListener("click", function (e) {
         var trigger = e.target.closest("[data-cal-link]");
         if (!trigger) return;
         e.preventDefault();
         var calLink = trigger.getAttribute("data-cal-link");
         if (calLink) {
+          calOpen = true;
           if (window.__lenis) window.__lenis.stop();
           Cal("modal", { calLink: calLink, config: { layout: "month_view" } });
         }
