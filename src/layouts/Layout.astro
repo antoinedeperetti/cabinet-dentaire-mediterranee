@@ -66,9 +66,19 @@ const schema = {
 
       if (!prefersReduced) {
         const lenis = new Lenis({
-          duration: 1.4,
+          duration: 1.2,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          direction: 'vertical',
+          gestureDirection: 'vertical',
+          smooth: true,
+          mouseMultiplier: 1,
+          smoothTouch: false,
+          touchMultiplier: 2,
+          infinite: false,
         });
+
+        // Expose pour l'intégration Cal.com (script inline)
+        (window as any).__lenis = lenis;
 
         function raf(time: number) {
           lenis.raf(time);
@@ -84,10 +94,14 @@ const schema = {
             const target = document.querySelector(href);
             if (target) {
               e.preventDefault();
-              lenis.scrollTo(target as HTMLElement, { offset: -80, duration: 1.4 });
+              lenis.scrollTo(target as HTMLElement, { offset: -80, duration: 1.2 });
             }
           });
         });
+
+        // Pause Lenis quand la modale Cal.com est ouverte
+        window.addEventListener('cal:popup_loaded', () => lenis.stop());
+        window.addEventListener('cal:popup_closed', () => lenis.start());
       }
     </script>
 
@@ -136,6 +150,7 @@ const schema = {
         e.preventDefault();
         var calLink = trigger.getAttribute("data-cal-link");
         if (calLink) {
+          if (window.__lenis) window.__lenis.stop();
           Cal("modal", { calLink: calLink, config: { layout: "month_view" } });
         }
       });
